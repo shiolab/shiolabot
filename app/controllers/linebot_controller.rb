@@ -5,10 +5,10 @@ class LinebotController < ApplicationController
   protect_from_forgery :except => [:callback]
 
   def client
-    @client ||= Line::Bot::Client.new { |config|
+    @client ||= Line::Bot::Client.new do |config|
       config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
       config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
-    }
+    end
   end
 
   def callback
@@ -21,7 +21,7 @@ class LinebotController < ApplicationController
 
     events = client.parse_events_from(body)
 
-    events.each { |event|
+    events.each do |event|
       case event
       when Line::Bot::Event::Message
         case event.type
@@ -33,7 +33,7 @@ class LinebotController < ApplicationController
           client.reply_message(event['replyToken'], message)
         end
       end
-    }
+    end
 
     "OK"
   end
