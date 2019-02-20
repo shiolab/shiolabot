@@ -18,14 +18,10 @@ class LinebotController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
-          message_text = event.message['text']
+          message = { type: 'text', text: event.message['text'] }
         when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
-          message_text = event.message['text']
+          message = { type: 'sticker', packageId: 1, stickerId: 1 }
         end
-        message = {
-          type: 'text',
-          text: message_text
-        }
         client.reply_message(event['replyToken'], message)
       end
     end
