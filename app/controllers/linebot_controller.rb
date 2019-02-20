@@ -18,7 +18,7 @@ class LinebotController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
-          message = { type: 'text', text: event.message['text'] }
+          message = { type: 'text', text: LinebotMessage.new(event.message['text']) }
         when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
           message = { type: 'sticker', packageId: 1, stickerId: 1 }
         end
