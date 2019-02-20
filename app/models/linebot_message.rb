@@ -7,7 +7,7 @@ class LinebotMessage
   end
 
   def reply
-  	reply_message = Vegetable.new(@event_message).find || Fruit.new(@event_message).find
+  	reply_message = Vegetable.new.find || Fruit.new.find
   	@event_message if reply_message.blank?
   end
 end
