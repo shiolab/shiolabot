@@ -18,11 +18,16 @@ class LinebotController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
-          message = { type: 'text', text: LinebotMessage.new(event.message['text']).reply }
+          event_message = event.message['text']
+          message = { type: 'text', text: LinebotMessage.new(event_message).reply }
+          client.reply_message(event['replyToken'], message)
+          if event_message =~ /(\d+)のスタンプ/
+            sticker = { type: 'sticker', packageId: 1, stickerId: $1.to_i }
+            client.reply_message(event['replyToken'], sticker)
+          end
         when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
-          message = { type: 'sticker', packageId: 1, stickerId: 1 }
+          nil
         end
-        client.reply_message(event['replyToken'], message)
       end
     end
     head :ok
