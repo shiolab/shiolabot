@@ -20,11 +20,9 @@ class LinebotController < ApplicationController
         when Line::Bot::Event::MessageType::Text
           message = { type: 'text', text: LinebotMessage.new(event.message['text']).reply }
           client.reply_message(event['replyToken'], message)
-
-          sticker = { type: 'sticker', packageId: 1, stickerId: 1 }
-          client.reply_message(event['replyToken'], sticker)
         when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
-          nil
+          sticker = { type: 'sticker', packageId: 1, stickerId: [*1..430].sample }
+          client.reply_message(event['replyToken'], sticker)
         end
       end
     end
