@@ -5,7 +5,7 @@ module Drugstore
     when "drugstore"
       "ドラッグストア"
     when "点鼻薬"
-      "698yenn"
+      "698yen"
     when"びたくーる"
       "980yen"
     when"のどぬーる"
@@ -17,5 +17,6 @@ module Drugstore
     when"くにひろ"
       "９８０いぇん"
     end
+    
   end
 end
