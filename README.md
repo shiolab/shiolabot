@@ -10,7 +10,8 @@
 ## Usage
 
 次のQRコードを読み取り、LINEで友だち登録します。
-![QR]https://github.com/shiolab/shiolabot/blob/master/public/y2Um5yd4D3.png?raw=true]
+
+![QR](https://github.com/shiolab/shiolabot/blob/master/public/y2Um5yd4D3.png?raw=true)
 
 友だち登録したら、価格を知りたい品目をメッセージしてみてください。
 
