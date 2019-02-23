@@ -4,6 +4,8 @@ module Drugstore
     case @event_message
     when "drugstore"
       "ドラッグストア"
+    when "点鼻薬"
+      "698yenn"
     end
   end
 end
