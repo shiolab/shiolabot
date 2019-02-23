@@ -6,7 +6,6 @@ module Foods
       "食品"
  when "米”
 　”石川県産こしひかり税込3219円”
-
     end
   end
 end
