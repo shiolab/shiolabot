@@ -10,6 +10,8 @@ module Drugstore
       "980yen"
     when"のどぬーる"
       "648yen"
+    when"アストカル"  
+      "498yen"
     end
   end
 end
